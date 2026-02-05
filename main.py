@@ -1,8 +1,17 @@
 import random
+import os
 import mysql.connector as ms
+from dotenv import load_dotenv
 import pickle
 
-con = ms.connect(host="localhost", user="root", passwd="tiger")
+
+load_dotenv()
+
+con = ms.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    passwd=os.getenv("DB_PASSWORD"),
+)
 cur = con.cursor()
 
 map = [[0, 0, 0], [0, "#", 0], [0, 0, 0]]
